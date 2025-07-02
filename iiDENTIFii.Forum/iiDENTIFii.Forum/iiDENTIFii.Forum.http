@@ -1,0 +1,6 @@
+@iiDENTIFii.Forum_HostAddress = http://localhost:5293
+
+GET {{iiDENTIFii.Forum_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
