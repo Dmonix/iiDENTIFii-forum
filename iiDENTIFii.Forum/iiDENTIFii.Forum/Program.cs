@@ -1,3 +1,5 @@
+using iiDENTIFii.Forum;
+using iiDENTIFii.Forum.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -6,15 +8,19 @@ using System.Security.Claims;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddAutoMapper(cfg =>
+{
+    cfg.AddProfile(typeof(MappingProfile));
+});
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<AppDbContext>(options => options.UseInMemoryDatabase("ForumDb"));
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseInMemoryDatabase("ForumDb"));
 
-builder.Services.AddIdentityCore<IdentityUser>()
-    .AddEntityFrameworkStores<AppDbContext>()
+builder.Services.AddIdentityCore<User>()
+    .AddEntityFrameworkStores<DatabaseContext>()
     .AddApiEndpoints();
 
 builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
@@ -35,13 +41,8 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.MapIdentityApi<IdentityUser>();
+app.MapIdentityApi<User>();
 
 app.MapGet("/test", (ClaimsPrincipal user) => $"Hello {user.Identity!.Name}").RequireAuthorization();
 
 app.Run();
-
-class AppDbContext : IdentityDbContext<IdentityUser>
-{
-    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
-}
