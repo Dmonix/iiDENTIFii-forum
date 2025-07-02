@@ -1,4 +1,4 @@
-﻿namespace iiDENTIFii.Forum.Domain
+﻿namespace iiDENTIFii.Forum.Models
 {
     public class Post
     {
