@@ -43,8 +43,7 @@ namespace iiDENTIFii.Forum.Controllers
         [Authorize]
         public IActionResult CreateNewPost([FromBody] Post post)
         {
-            var userClaim = this.HttpContext.User.Identity;
-            var user = userService.GetUser(userClaim.Name);
+            var user = GetUserFromClaim();
             if (user == null)
             {
                 return BadRequest("User is not logged in");
@@ -69,7 +68,7 @@ namespace iiDENTIFii.Forum.Controllers
         [Authorize]
         public IActionResult LikePost(int id)
         {
-            var user = this.HttpContext.User.Identity as User;
+            var user = GetUserFromClaim();
             if (user == null)
             {
                 return BadRequest("User is not logged in");
@@ -90,7 +89,7 @@ namespace iiDENTIFii.Forum.Controllers
         [Authorize]
         public IActionResult TagPost(int id)
         {
-            var user = this.HttpContext.User.Identity as User;
+            var user = GetUserFromClaim();
             if (user == null)
             {
                 return BadRequest("User is not logged in");
@@ -104,6 +103,12 @@ namespace iiDENTIFii.Forum.Controllers
             postService.TagPost(id, user);
 
             return Ok();
+        }
+
+        private User GetUserFromClaim()
+        {
+            var claimUser = this.HttpContext.User.Identity;
+            return userService.GetUser(claimUser.Name);
         }
     }
 }
