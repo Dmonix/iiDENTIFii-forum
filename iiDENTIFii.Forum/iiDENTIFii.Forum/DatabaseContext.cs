@@ -11,6 +11,9 @@ namespace iiDENTIFii.Forum
         {
         }
 
+        DbSet<Post> Posts { get; set; }
+        DbSet<PostComment> PostComments { get; set; }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
