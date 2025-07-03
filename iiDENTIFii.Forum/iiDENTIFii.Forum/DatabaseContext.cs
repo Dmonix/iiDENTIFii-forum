@@ -6,13 +6,13 @@ namespace iiDENTIFii.Forum
 {
     public class DatabaseContext : IdentityDbContext<User>
     {
+        public DbSet<Post> Posts { get; set; }
+        public DbSet<PostComment> PostComments { get; set; }
+
         public DatabaseContext(DbContextOptions options)
             : base(options)
         {
         }
-
-        DbSet<Post> Posts { get; set; }
-        DbSet<PostComment> PostComments { get; set; }
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
