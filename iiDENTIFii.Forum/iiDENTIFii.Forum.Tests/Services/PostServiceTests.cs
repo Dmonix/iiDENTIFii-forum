@@ -17,7 +17,16 @@ namespace iiDENTIFii.Forum.Tests.Services
         }
 
         [Test]
-        public void GetLikes_ShouldPass()
+        public void GetAllPosts_ShouldPass()
+        {
+            var posts = postService.GetPosts();
+
+            Assert.IsNotNull(posts);
+            Assert.GreaterOrEqual(posts.Count, 0);
+        }
+
+        [Test]
+        public void GetPost_ShouldPass()
         {
             var post = postService.GetPost(1);
 
