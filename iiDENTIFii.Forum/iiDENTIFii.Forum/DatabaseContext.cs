@@ -8,6 +8,7 @@ namespace iiDENTIFii.Forum
     {
         public DbSet<Post> Posts { get; set; }
         public DbSet<PostComment> PostComments { get; set; }
+        public DbSet<Like> Likes { get; set; }
 
         public DatabaseContext(DbContextOptions options)
             : base(options)

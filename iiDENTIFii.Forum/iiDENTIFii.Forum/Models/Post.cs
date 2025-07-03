@@ -9,7 +9,7 @@
         public required string Content { get; set; }
         public required User Author { get; set; }
         public List<PostComment> Comments { get; set; } = new List<PostComment>();
-        public int Likes { get; set; }
+        public List<Like> Likes { get; set; } = new List<Like>();
         public bool IsTagged { get; set; } = false;
         public string TagDescription { get; set; } = string.Empty;
     }

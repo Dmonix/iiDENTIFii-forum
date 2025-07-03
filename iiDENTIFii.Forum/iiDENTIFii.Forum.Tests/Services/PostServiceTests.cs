@@ -1,16 +1,19 @@
 ﻿using iiDENTIFii.Forum.Interfaces;
 using iiDENTIFii.Forum.Services;
+using Moq;
 
 namespace iiDENTIFii.Forum.Tests.Services
 {
     public class PostServiceTests
     {
         private IPostService postService;
+        private DatabaseContext databaseContext;
 
         [SetUp]
         public void Setup()
         {
-            postService = new PostService();
+            databaseContext = new Mock<DatabaseContext>().Object;
+            postService = new PostService(databaseContext);
         }
 
         [Test]
