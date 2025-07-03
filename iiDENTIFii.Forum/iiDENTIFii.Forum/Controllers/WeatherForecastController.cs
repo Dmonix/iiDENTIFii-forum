@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace iiDENTIFii.Forum.Controllers
@@ -12,10 +13,12 @@ namespace iiDENTIFii.Forum.Controllers
         };
 
         private readonly ILogger<WeatherForecastController> _logger;
+        private readonly DatabaseContext _databaseContext;
 
-        public WeatherForecastController(ILogger<WeatherForecastController> logger)
+        public WeatherForecastController(ILogger<WeatherForecastController> logger, DatabaseContext databaseContext)
         {
             _logger = logger;
+            _databaseContext = databaseContext;
         }
 
         [HttpGet(Name = "GetWeatherForecast")]
@@ -28,6 +31,15 @@ namespace iiDENTIFii.Forum.Controllers
                 Summary = Summaries[Random.Shared.Next(Summaries.Length)]
             })
             .ToArray();
+        }
+
+        [HttpGet("test")]
+        [Authorize]
+        public IActionResult Test()
+        {
+            var user = this.HttpContext.User;
+            var loggedUser = _databaseContext.Users.First(u => u.Email.Equals(user.Identity.Name, StringComparison.OrdinalIgnoreCase));
+            return Ok($"Hello {loggedUser.DisplayName}");
         }
     }
 }
