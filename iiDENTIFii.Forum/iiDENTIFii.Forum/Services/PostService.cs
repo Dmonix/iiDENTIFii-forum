@@ -25,17 +25,49 @@ namespace iiDENTIFii.Forum.Services
 
         public void AddComment(int id, PostComment comment)
         {
-            throw new NotImplementedException();
+            var post = db.Posts.Single(post => post.Id == id);
+            post.Comments.Add(comment);
+            db.Posts.Update(post);
+            db.SaveChanges();
         }
 
         public Post AddPost(Post post)
         {
-            throw new NotImplementedException();
+            db.Posts.Add(post);
+            db.SaveChanges();
+
+            return post;
         }
 
         public Tuple<bool, string> LikePost(int id, User user)
         {
-            throw new NotImplementedException();
+            var post = db.Posts.Single(post => post.Id == id);
+            if (post.Author.Email == user.Email)
+            {
+                return new Tuple<bool, string>(false, "Author cannot like their own post");
+            }
+
+            var currentlyLiked = post.Likes.Where(like => like.UserEmail == user.Email);
+            if (currentlyLiked.Any())
+            {
+                // A user cannot like a post more than once, functionality does not require a like to be removed
+                // Potential future requirement to remove matched like, for now return fail state
+                return new Tuple<bool, string>(false, "User can only like a post once");
+            }
+
+            post.Likes.Add(new Like() { UserEmail = user.Email });
+            db.Posts.Update(post);
+            db.SaveChanges();
+
+            return new Tuple<bool, string>(true, String.Empty);
+        }
+
+        public void TagPost(int id, User user)
+        {
+            var post = db.Posts.Single(post => post.Id == id);
+            post.IsTagged = true;
+            db.Posts.Update(post);
+            db.SaveChanges();
         }
     }
 }

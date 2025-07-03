@@ -84,5 +84,25 @@ namespace iiDENTIFii.Forum.Controllers
                 return BadRequest(result.Item2);
             }
         }
+
+        [HttpPut("{id}/tag")]
+        [Authorize]
+        public IActionResult TagPost(int id)
+        {
+            var user = this.HttpContext.User.Identity as User;
+            if (user == null)
+            {
+                return BadRequest("User is not logged in");
+            }
+
+            if (!user.IsModerator)
+            {
+                return BadRequest("Only moderators may tag posts");
+            }
+
+            postService.TagPost(id, user);
+
+            return Ok();
+        }
     }
 }

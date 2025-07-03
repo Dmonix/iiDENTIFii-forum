@@ -9,5 +9,6 @@ namespace iiDENTIFii.Forum.Interfaces
         public Post GetPost(int id);
         public List<Post> GetPosts();
         public Tuple<bool, string> LikePost(int id, User user);
+        public void TagPost(int id, User user);
     }
 }
