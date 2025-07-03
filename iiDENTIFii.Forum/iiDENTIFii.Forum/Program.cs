@@ -47,11 +47,4 @@ app.MapControllers();
 
 app.MapIdentityApi<User>();
 
-app.MapGet("/test", (ClaimsPrincipal user) => 
-{
-    DatabaseContext db = app.Services.GetRequiredService<DatabaseContext>();
-    var loggedUser = db.Users.FirstOrDefault(user => user.Email!.Equals(user.Email, StringComparison.OrdinalIgnoreCase));
-    return $"Hello {loggedUser?.DisplayName}";
-}).RequireAuthorization();
-
 app.Run();
