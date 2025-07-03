@@ -1,12 +1,20 @@
 ﻿using iiDENTIFii.Forum.Interfaces;
+using iiDENTIFii.Forum.Models;
 
 namespace iiDENTIFii.Forum.Services
 {
     public class UserService : IUserService
     {
-        public void AddLike(string postId)
+        private readonly DatabaseContext db;
+
+        public UserService(DatabaseContext databaseContext)
         {
-            throw new NotImplementedException();
+            this.db = databaseContext;
+        }
+
+        public User GetUser(string email)
+        {
+            return db.Users.Single(user  => user.Email == email);
         }
     }
 }

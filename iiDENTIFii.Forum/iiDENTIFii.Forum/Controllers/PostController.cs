@@ -25,7 +25,7 @@ namespace iiDENTIFii.Forum.Controllers
             return Ok(posts);
         }
 
-        [HttpGet("id")]
+        [HttpGet("{id}")]
         public IActionResult GetPostById(int id)
         {
             try
@@ -43,7 +43,8 @@ namespace iiDENTIFii.Forum.Controllers
         [Authorize]
         public IActionResult CreateNewPost([FromBody] Post post)
         {
-            var user = this.HttpContext.User.Identity as User;
+            var userClaim = this.HttpContext.User.Identity;
+            var user = userService.GetUser(userClaim.Name);
             if (user == null)
             {
                 return BadRequest("User is not logged in");

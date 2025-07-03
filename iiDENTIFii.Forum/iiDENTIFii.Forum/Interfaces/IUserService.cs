@@ -1,7 +1,9 @@
-﻿namespace iiDENTIFii.Forum.Interfaces
+﻿using iiDENTIFii.Forum.Models;
+
+namespace iiDENTIFii.Forum.Interfaces
 {
     public interface IUserService
     {
-        void AddLike(string postId);
+        User GetUser(string name);
     }
 }

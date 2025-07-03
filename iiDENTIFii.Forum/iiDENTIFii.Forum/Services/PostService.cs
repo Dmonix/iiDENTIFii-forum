@@ -23,20 +23,20 @@ namespace iiDENTIFii.Forum.Services
             return db.Posts.Single(post => post.Id == id);
         }
 
-        public void AddComment(int id, PostComment comment)
-        {
-            var post = db.Posts.Single(post => post.Id == id);
-            post.Comments.Add(comment);
-            db.Posts.Update(post);
-            db.SaveChanges();
-        }
-
         public Post AddPost(Post post)
         {
             db.Posts.Add(post);
             db.SaveChanges();
 
             return post;
+        }
+
+        public void AddComment(int id, PostComment comment)
+        {
+            var post = db.Posts.Single(post => post.Id == id);
+            post.Comments.Add(comment);
+            db.Posts.Update(post);
+            db.SaveChanges();
         }
 
         public Tuple<bool, string> LikePost(int id, User user)
