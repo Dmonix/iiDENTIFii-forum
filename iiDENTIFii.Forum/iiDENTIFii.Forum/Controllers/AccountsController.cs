@@ -19,6 +19,11 @@ namespace iiDENTIFii.Forum.Controllers
             this.mapper = mapper;
         }
 
+        /// <summary>
+        /// Basic endpoint for registering a user
+        /// </summary>
+        /// <param name="userForRegistration"></param>
+        /// <returns></returns>
         [HttpPost("register")]
         public async Task<IActionResult> RegisterUser([FromBody] UserForRegistrationDto userForRegistration)
         {
