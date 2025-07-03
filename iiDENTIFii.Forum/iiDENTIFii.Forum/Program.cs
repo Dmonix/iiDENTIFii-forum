@@ -1,7 +1,8 @@
 using iiDENTIFii.Forum;
+using iiDENTIFii.Forum.Interfaces;
 using iiDENTIFii.Forum.Models;
+using iiDENTIFii.Forum.Services;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
@@ -22,6 +23,9 @@ builder.Services.AddDbContext<DatabaseContext>(options => options.UseInMemoryDat
 builder.Services.AddIdentityCore<User>()
     .AddEntityFrameworkStores<DatabaseContext>()
     .AddApiEndpoints();
+
+builder.Services.AddScoped<IPostService, PostService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerScheme);
 builder.Services.AddAuthorizationBuilder();
