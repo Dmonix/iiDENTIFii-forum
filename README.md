@@ -3,7 +3,7 @@
 ## Project Overview
 The iiDENTIFii Forum is a web-based platform designed to facilitate discussions among a small number of users (< 100). The forum allows users to create posts, comment on posts, and like posts. Moderators have additional privileges to tag posts as "misleading or false information" for regulatory purposes.
 
-## Features
+## Feature Requirements
 
 ### User Functionality
 1. **Post Creation**: Users can create posts. ✅
@@ -27,10 +27,10 @@ The iiDENTIFii Forum is a web-based platform designed to facilitate discussions 
 4. Provides a simple API for external third-party applications, documented in Postman.
 
 ## Testing
-1. Includes either a rudimentary UI (MVC pattern) or a Postman collection for API testing.
+1. Includes either a rudimentary UI (MVC pattern) or a Postman collection for API testing. ✅
 
 ## Submission Guidelines
 1. Code is submitted via a public GitHub repository with a full commit history. ✅
 2. README contains instructions to run the project locally, including external dependencies.
 3. Includes a datastore with test/dummy data.
-4. Provides a public Postman collection for API endpoint testing.
+4. Provides a public Postman collection for API endpoint testing. ✅
