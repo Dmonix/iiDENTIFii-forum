@@ -1,6 +1,7 @@
 using iiDENTIFii.Forum;
 using iiDENTIFii.Forum.Interfaces;
 using iiDENTIFii.Forum.Models;
+using iiDENTIFii.Forum.Seeding;
 using iiDENTIFii.Forum.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -31,6 +32,15 @@ builder.Services.AddAuthentication().AddBearerToken(IdentityConstants.BearerSche
 builder.Services.AddAuthorizationBuilder();
 
 var app = builder.Build();
+
+// Create base users for application
+using (var scope = app.Services.CreateScope())
+{
+    var context = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+    var seeder = new ApplicationDataSeed(context);
+    await seeder.SeedData(userManager);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
