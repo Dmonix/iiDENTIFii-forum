@@ -1,0 +1,175 @@
+{
+	"info": {
+		"_postman_id": "5f206720-2059-4c92-a85f-164769736110",
+		"name": "iiDENTIFii Forum",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "1991887"
+	},
+	"item": [
+		{
+			"name": "Account Creation and Login",
+			"item": [
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"donalddunlop159@gmail.com\",\r\n  \"password\": \"no_3ntrY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7288/login",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7288",
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Alternative Register",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"donalddunlop159@gmail.com\",\r\n  \"password\": \"no_3ntrY\",\r\n  \"displayname\": \"Dmonix\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7288/api/accounts/register",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7288",
+							"path": [
+								"api",
+								"accounts",
+								"register"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Post Flow",
+			"item": [
+				{
+					"name": "Add Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "CfDJ8Nv7oS5wHPRGoOYktRaQMHaoMUD6UoPM-HPW2c1NA8xfnj_wTckibyHVEabzo0GBiUYnvdxBfKDJnmnlLhGkJZBmr5NeEfVIK1mo4C59AzID1m47YSQsKCFlAdsIa3caDTzms3GCBSmAC_VyppxDKnqmpCHE6Rm4y5DifpMsaACrTzGOrzoPdYuggxpn8ixc9nUeg8Cy3aORUyfJB4zJnW44cseiFWvYnsQzQkVyp-gYV5W8kX2ccOn72cIh4yHb3TU-VifABEhvmWU8xPNuvGY8m8sIrJBoejoIkJQRq74bil7HcWh1fiMhYeff-SU42ldzWTO6k_AIEl26dh7OIOxOmIiC3JVmM0OIlwTuenNw3rlsWHgHv-o7ZGrq0YVE2uTh0c2smqOKnEKVnZG8OQ2rMHYkuUo4JD0H2OWdsfZOXZFiE0f0Ex_BSTcGCKgkY4uyAJIMNDCq7BJ4XUXJaRumICl3c3W-NPa1rJUmo6AJjMtY1Gvn-NzxlCr7CL45_Nff-p9ntfjGcjwCo3rGscHbjZavy_jquB8V4pTChPITAzQxUU8mMTs1HGY1GfD3ouNpb-261S32fvW9RLTIOJxATb0u7hB88zJAJrdk-2NXSijvZGsHQJ65AZJmVY8xyBTG-7lRaTATDstNxRQNkCS0nS0mOAJK78Gcwh2b2MkJedcK5s19VKstbZnaEpavo_Tn-cg-ULp7XJ4cwHrwQJc",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title\": \"My first post\",\r\n    \"content\": \"Hello World, this is my first post\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7288/Post",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7288",
+							"path": [
+								"Post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Posts",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "CfDJ8Nv7oS5wHPRGoOYktRaQMHagsAE158jv-um9qva1pvW_QjcWOKOyZF02F6khxvLXpgOPkQiK1g1rRzkPseIBQHr7tZfycFkoRQfpWlZsJiuAbcMoFp4ayiLJpDVe4Oy0Dm-DLEFYP6ctKCopuNwt0RBwkOmgN8tGxv7lTuVQjtnGXiJ4wtdMOhmC7BADTuYFOO1VucwAIw48PtdYL7eWr5ExCZRRfutDQYvS461rsRXnUBSHQhZvZJgmFWSjDbrru2x0xnNJEgDgL_jgkeojL8oc9xKCDte5McgyMqRbmCZf_686ZN0zRe5oSa_yv18S8I8Jh6I7qf46SaLGkBNYDaCAUWuORYWQEAJepIyqofxxU7QO_gFBfqHZhqz26rL4snemynpqDgnGtidhICLea_8gJj5iVoo9cp8aPIffhANO5YU8jLS21EvZ-Ql8w7UTgADXh1YVi44HwcMDefj9k7ThHWTFD-RtzvpCPU65yEkRoQliwQ1cyWCiEETOMUxC_6SoTC0PVztWZNIVgMXAqldgFsaXzgnqyef69QxtHrAZzDWbvftQhKE6vfbbGysVw1fchfv9XPBZaCWXIQEF1kXBHTC9W6qgME-VvZv3ks2uDZHeHqdaaSiGzwT3FyitSJUmXccE5uDARiWoQbvLaKnUAVDcM3xijgORaqfG_VVAjMOxRALPPIBNonISqzjtpdTM5pKHZhKF2i5iZzJ4xkA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7288/Post",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7288",
+							"path": [
+								"Post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Post 1",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "CfDJ8Nv7oS5wHPRGoOYktRaQMHagsAE158jv-um9qva1pvW_QjcWOKOyZF02F6khxvLXpgOPkQiK1g1rRzkPseIBQHr7tZfycFkoRQfpWlZsJiuAbcMoFp4ayiLJpDVe4Oy0Dm-DLEFYP6ctKCopuNwt0RBwkOmgN8tGxv7lTuVQjtnGXiJ4wtdMOhmC7BADTuYFOO1VucwAIw48PtdYL7eWr5ExCZRRfutDQYvS461rsRXnUBSHQhZvZJgmFWSjDbrru2x0xnNJEgDgL_jgkeojL8oc9xKCDte5McgyMqRbmCZf_686ZN0zRe5oSa_yv18S8I8Jh6I7qf46SaLGkBNYDaCAUWuORYWQEAJepIyqofxxU7QO_gFBfqHZhqz26rL4snemynpqDgnGtidhICLea_8gJj5iVoo9cp8aPIffhANO5YU8jLS21EvZ-Ql8w7UTgADXh1YVi44HwcMDefj9k7ThHWTFD-RtzvpCPU65yEkRoQliwQ1cyWCiEETOMUxC_6SoTC0PVztWZNIVgMXAqldgFsaXzgnqyef69QxtHrAZzDWbvftQhKE6vfbbGysVw1fchfv9XPBZaCWXIQEF1kXBHTC9W6qgME-VvZv3ks2uDZHeHqdaaSiGzwT3FyitSJUmXccE5uDARiWoQbvLaKnUAVDcM3xijgORaqfG_VVAjMOxRALPPIBNonISqzjtpdTM5pKHZhKF2i5iZzJ4xkA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7288/Post/1",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7288",
+							"path": [
+								"Post",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
