@@ -10,7 +10,8 @@
         public User Author { get; set; } = new User();
         public List<PostComment> Comments { get; set; } = new List<PostComment>();
         public List<Like> Likes { get; set; } = new List<Like>();
+        public int LikeCount => Likes.Count;
         public bool IsTagged { get; set; } = false;
-        public string TagDescription { get; set; } = string.Empty;
+        public string TagDescription => IsTagged ? MisleadingDescription : String.Empty;
     }
 }
