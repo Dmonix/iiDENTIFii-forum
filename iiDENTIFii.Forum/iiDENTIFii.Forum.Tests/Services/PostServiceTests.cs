@@ -103,19 +103,10 @@ namespace iiDENTIFii.Forum.Tests.Services
         [Test]
         public void TagPost_ShouldPass()
         {
+            // Controller already checks for IsModerator permissions
             var post = postService.GetPost(1);
 
             postService.TagPost(post.Id, modUser);
-
-            Assert.Pass();
-        }
-
-        [Test]
-        public void TagPost_ShouldFail()
-        {
-            var post = postService.GetPost(1);
-
-            postService.TagPost(post.Id, authorUser);
 
             Assert.Pass();
         }
