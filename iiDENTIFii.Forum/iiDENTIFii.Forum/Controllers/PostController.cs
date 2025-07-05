@@ -31,7 +31,7 @@ namespace iiDENTIFii.Forum.Controllers
         /// <param name="size">Size of each page</param>
         /// <returns></returns>
         [HttpGet]
-        public IActionResult GetAllPosts(string author, string fromDate, string toDate, string sort, string sortDir, bool isTagged, int page = 1, int size = 10)
+        public IActionResult GetAllPosts(string author = "", string fromDate = "", string toDate = "", string sort = "", string sortDir = "", bool isTagged = false, int page = 1, int size = 10)
         {
             var posts = postService.GetPosts();
             return Ok(posts);
