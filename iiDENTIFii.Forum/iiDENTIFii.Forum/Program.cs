@@ -5,9 +5,10 @@ using iiDENTIFii.Forum.Seeding;
 using iiDENTIFii.Forum.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using System.Security.Claims;
 
 var builder = WebApplication.CreateBuilder(args);
+
+var connectionString = builder.Configuration.GetConnectionString("ForumDb") ?? "Data Source=Forum.db";
 
 // Add services to the container.
 builder.Services.AddAutoMapper(cfg =>
@@ -19,7 +20,10 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DatabaseContext>(options => options.UseInMemoryDatabase("ForumDb"));
+
+// Replace In memory DB with SQLite DB
+// builder.Services.AddDbContext<DatabaseContext>(options => options.UseInMemoryDatabase("ForumDb"));
+builder.Services.AddSqlite<DatabaseContext>(connectionString);
 
 builder.Services.AddIdentityCore<User>()
     .AddEntityFrameworkStores<DatabaseContext>()
