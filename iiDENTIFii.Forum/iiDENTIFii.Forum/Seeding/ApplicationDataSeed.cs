@@ -54,6 +54,12 @@ namespace iiDENTIFii.Forum.Seeding
             await userManager.CreateAsync(likingUser, "no_3ntrY");
             await userManager.CreateAsync(modUser, "no_3ntrY");
 
+            var checkPosts = postService.GetPosts();
+            if (checkPosts != null || checkPosts.Any())
+            {
+                return;
+            }
+
             var firstPost = new Post()
             { 
                 Title = "SOLID Part 1: Single-responsibility Principle",
