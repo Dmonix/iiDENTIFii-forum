@@ -55,7 +55,7 @@ namespace iiDENTIFii.Forum.Seeding
             await userManager.CreateAsync(modUser, "no_3ntrY");
 
             var checkPosts = postService.GetPosts();
-            if (checkPosts != null || checkPosts.Any())
+            if (checkPosts != null && checkPosts.Count > 0)
             {
                 return;
             }
@@ -65,6 +65,7 @@ namespace iiDENTIFii.Forum.Seeding
                 Title = "SOLID Part 1: Single-responsibility Principle",
                 Content = "A class should have one and only one reason to change, meaning that a class should only have one job",
                 Author = authorUser,
+                CreatedDate = DateTime.Parse("2024 - 07 - 06T20: 59:37.6237278Z"),
             };
 
             var secondPost = new Post()
