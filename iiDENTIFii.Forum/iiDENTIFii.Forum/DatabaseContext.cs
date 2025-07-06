@@ -6,9 +6,9 @@ namespace iiDENTIFii.Forum
 {
     public class DatabaseContext : IdentityDbContext<User>
     {
-        public DbSet<Post> Posts { get; set; }
-        public DbSet<PostComment> PostComments { get; set; }
-        public DbSet<Like> Likes { get; set; }
+        public virtual DbSet<Post> Posts { get; set; }
+        public virtual DbSet<PostComment> PostComments { get; set; }
+        public virtual DbSet<Like> Likes { get; set; }
 
         public DatabaseContext(DbContextOptions options)
             : base(options)

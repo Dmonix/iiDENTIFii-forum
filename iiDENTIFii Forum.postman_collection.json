@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"email\": \"donalddunlop159@gmail.com\",\r\n  \"password\": \"no_3ntrY\"\r\n}",
+							"raw": "{\r\n  \"email\": \"arthur@gmail.com\",\r\n  \"password\": \"no_3ntrY\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -38,7 +38,7 @@
 					"response": []
 				},
 				{
-					"name": "Alternative Register",
+					"name": "Registration",
 					"request": {
 						"method": "POST",
 						"header": [],
@@ -80,7 +80,7 @@
 							"bearer": [
 								{
 									"key": "token",
-									"value": "CfDJ8Nv7oS5wHPRGoOYktRaQMHaoMUD6UoPM-HPW2c1NA8xfnj_wTckibyHVEabzo0GBiUYnvdxBfKDJnmnlLhGkJZBmr5NeEfVIK1mo4C59AzID1m47YSQsKCFlAdsIa3caDTzms3GCBSmAC_VyppxDKnqmpCHE6Rm4y5DifpMsaACrTzGOrzoPdYuggxpn8ixc9nUeg8Cy3aORUyfJB4zJnW44cseiFWvYnsQzQkVyp-gYV5W8kX2ccOn72cIh4yHb3TU-VifABEhvmWU8xPNuvGY8m8sIrJBoejoIkJQRq74bil7HcWh1fiMhYeff-SU42ldzWTO6k_AIEl26dh7OIOxOmIiC3JVmM0OIlwTuenNw3rlsWHgHv-o7ZGrq0YVE2uTh0c2smqOKnEKVnZG8OQ2rMHYkuUo4JD0H2OWdsfZOXZFiE0f0Ex_BSTcGCKgkY4uyAJIMNDCq7BJ4XUXJaRumICl3c3W-NPa1rJUmo6AJjMtY1Gvn-NzxlCr7CL45_Nff-p9ntfjGcjwCo3rGscHbjZavy_jquB8V4pTChPITAzQxUU8mMTs1HGY1GfD3ouNpb-261S32fvW9RLTIOJxATb0u7hB88zJAJrdk-2NXSijvZGsHQJ65AZJmVY8xyBTG-7lRaTATDstNxRQNkCS0nS0mOAJK78Gcwh2b2MkJedcK5s19VKstbZnaEpavo_Tn-cg-ULp7XJ4cwHrwQJc",
+									"value": "CfDJ8Nv7oS5wHPRGoOYktRaQMHZ3IBhbkvX_IqSUIVNYlImzdTAx3eRjvun3uo-HOGW2BTR_OLANAj727HvWVFQeKOgaRHLKtYZ2Ov_cagMfRpBZlk8Yo95pypR2yPlnx36QtYN6WwPoN2FwtTtP4l-JPVSwpCh6c-88yx9jnbxmIrdYCVRpHI5yS1mhl4GL79jDHgwjd4e-rF4RpHFEI1PyWWD1Fz9YG8AHs0GrQrzhKoW3_aupKtdo9dHjMsEu56AdTJQ5j4edmdzVy5AHFyB8DBYYDt1tmBy9CXoqzK1UYRMIWRmFg6J6FKuLEj9siT2jCZTJSsHXhDdzvbOZUNVEXexloQTdZhMlM9kIZmwimknHmPDXjhZrwzpXtJiRTa-Qhj5ZGDgOS-NNnOmGSVoJMBn7wfKtN6Qg0_B-XGCo-X_4ZpK8JBdmV-Wf2-ei2zI91Xfo4-U7AhbhK7m70NoEf4bl0wX2RIihlEQM3x8kNgaY5_q8G7sGAp11u9ZoMG8SWUTL7YLispRG4Ty0hNKrL3R26XTv8tFXh5XiU0raFUBuPvlqqoOrSTBRF061ZCV5KDUQA2YB5V8pw2hJIlp_-Qe23qul1ltkNzzQnMgTUyPxa7nVcJWNz6tyGVYDW7BrVVu3xt83VPbWJDKOVbdH_Y__5TZCFR_e0EqgO7x_IBhiKuY95JvOVigrFzoYvBa9OQ",
 									"type": "string"
 								}
 							]
@@ -105,6 +105,46 @@
 							"port": "7288",
 							"path": [
 								"Post"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Comment on Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "CfDJ8Nv7oS5wHPRGoOYktRaQMHZ3IBhbkvX_IqSUIVNYlImzdTAx3eRjvun3uo-HOGW2BTR_OLANAj727HvWVFQeKOgaRHLKtYZ2Ov_cagMfRpBZlk8Yo95pypR2yPlnx36QtYN6WwPoN2FwtTtP4l-JPVSwpCh6c-88yx9jnbxmIrdYCVRpHI5yS1mhl4GL79jDHgwjd4e-rF4RpHFEI1PyWWD1Fz9YG8AHs0GrQrzhKoW3_aupKtdo9dHjMsEu56AdTJQ5j4edmdzVy5AHFyB8DBYYDt1tmBy9CXoqzK1UYRMIWRmFg6J6FKuLEj9siT2jCZTJSsHXhDdzvbOZUNVEXexloQTdZhMlM9kIZmwimknHmPDXjhZrwzpXtJiRTa-Qhj5ZGDgOS-NNnOmGSVoJMBn7wfKtN6Qg0_B-XGCo-X_4ZpK8JBdmV-Wf2-ei2zI91Xfo4-U7AhbhK7m70NoEf4bl0wX2RIihlEQM3x8kNgaY5_q8G7sGAp11u9ZoMG8SWUTL7YLispRG4Ty0hNKrL3R26XTv8tFXh5XiU0raFUBuPvlqqoOrSTBRF061ZCV5KDUQA2YB5V8pw2hJIlp_-Qe23qul1ltkNzzQnMgTUyPxa7nVcJWNz6tyGVYDW7BrVVu3xt83VPbWJDKOVbdH_Y__5TZCFR_e0EqgO7x_IBhiKuY95JvOVigrFzoYvBa9OQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"content\": \"This is really useful, thanks for posting\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://localhost:7288/Post/2/comment",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7288",
+							"path": [
+								"Post",
+								"2",
+								"comment"
 							]
 						}
 					},
@@ -164,6 +204,68 @@
 							"path": [
 								"Post",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Like Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "CfDJ8Nv7oS5wHPRGoOYktRaQMHagsAE158jv-um9qva1pvW_QjcWOKOyZF02F6khxvLXpgOPkQiK1g1rRzkPseIBQHr7tZfycFkoRQfpWlZsJiuAbcMoFp4ayiLJpDVe4Oy0Dm-DLEFYP6ctKCopuNwt0RBwkOmgN8tGxv7lTuVQjtnGXiJ4wtdMOhmC7BADTuYFOO1VucwAIw48PtdYL7eWr5ExCZRRfutDQYvS461rsRXnUBSHQhZvZJgmFWSjDbrru2x0xnNJEgDgL_jgkeojL8oc9xKCDte5McgyMqRbmCZf_686ZN0zRe5oSa_yv18S8I8Jh6I7qf46SaLGkBNYDaCAUWuORYWQEAJepIyqofxxU7QO_gFBfqHZhqz26rL4snemynpqDgnGtidhICLea_8gJj5iVoo9cp8aPIffhANO5YU8jLS21EvZ-Ql8w7UTgADXh1YVi44HwcMDefj9k7ThHWTFD-RtzvpCPU65yEkRoQliwQ1cyWCiEETOMUxC_6SoTC0PVztWZNIVgMXAqldgFsaXzgnqyef69QxtHrAZzDWbvftQhKE6vfbbGysVw1fchfv9XPBZaCWXIQEF1kXBHTC9W6qgME-VvZv3ks2uDZHeHqdaaSiGzwT3FyitSJUmXccE5uDARiWoQbvLaKnUAVDcM3xijgORaqfG_VVAjMOxRALPPIBNonISqzjtpdTM5pKHZhKF2i5iZzJ4xkA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7288/Post/1/like",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7288",
+							"path": [
+								"Post",
+								"1",
+								"like"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Tag Post",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "CfDJ8Nv7oS5wHPRGoOYktRaQMHZfEUkjegEIGk6wn3ry1nkTdkjs-5Q5HJgpSlbDUQanBFWuu8PhrnaQ7fjzJ4RkgFUT8Cwd7R2YwlQRAN0hj_6lwwhWlclKxw0yj2whl5UqMC2Vb1tSw7eWfGkQcxDlpfQTGM9B8SPO4xLBZBWG38SOu3PCoSjv4v-xO04nPyWXO7fsWGEpJ7vahSus8qmFNg0lrVBA9vqiWjzk7W38FVNezcrpQZoL6R0CJxKqSXtVNRvpIba7hGnGAbsTArY34DBFrNIgcfrJ2PVF2AfY5uE5IRZlVt5sOAmlKpnCn43Ujc0HQPqXCUX02JHzGOwWyJj3PFGkU5xgJF41ysU6lCm8M5nVQ4Yqxjy8Oz9jP1lure3FrkCMSMtmbr17kXhWrgPIdSDJ__FoU3-5g4e6OI3hPDOUm9qpR7GYRLu8GEeyEz3hnlZxENzxkTbhHsc8N2fHEjmuZMC4uR7kgE5mGU8khLUnBDmm_AqwkiZQJ0aWqMDpeLuHTANBaeZ1jAx3AuxOrMiUnZri9bX0adHmz9niWsLzuOJIIaL9zYwCTkgDdGMeQPw85kaNdEpv6DAtNM7eCGRs15KNegAtntBNzUUYrTeBRyh6qKICwh-b1N1jlEul6cp4twkKBcY9eAEp5Apzs0p2hcnufwzRH2-8XYMFbTJV2zxjTdV4E1wd408oIQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"url": {
+							"raw": "https://localhost:7288/Post/1/tag",
+							"protocol": "https",
+							"host": [
+								"localhost"
+							],
+							"port": "7288",
+							"path": [
+								"Post",
+								"1",
+								"tag"
 							]
 						}
 					},

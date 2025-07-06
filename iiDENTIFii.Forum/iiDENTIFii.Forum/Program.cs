@@ -22,8 +22,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Replace In memory DB with SQLite DB
-// builder.Services.AddDbContext<DatabaseContext>(options => options.UseInMemoryDatabase("ForumDb"));
-builder.Services.AddSqlite<DatabaseContext>(connectionString);
+builder.Services.AddDbContext<DatabaseContext>(options => options.UseInMemoryDatabase("ForumDb"));
+//builder.Services.AddSqlite<DatabaseContext>(connectionString);
 
 builder.Services.AddIdentityCore<User>()
     .AddEntityFrameworkStores<DatabaseContext>()
@@ -42,7 +42,8 @@ using (var scope = app.Services.CreateScope())
 {
     var context = scope.ServiceProvider.GetRequiredService<DatabaseContext>();
     var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
-    var seeder = new ApplicationDataSeed(context);
+    var postService = scope.ServiceProvider.GetRequiredService<IPostService>();
+    var seeder = new ApplicationDataSeed(context, postService);
     await seeder.SeedData(userManager);
 }
 
