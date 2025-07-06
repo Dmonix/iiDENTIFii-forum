@@ -33,7 +33,7 @@ namespace iiDENTIFii.Forum.Controllers
         [HttpGet]
         public IActionResult GetAllPosts(string author = "", string fromDate = "", string toDate = "", string sort = "", string sortDir = "", bool isTagged = false, int page = 1, int size = 10)
         {
-            var posts = postService.GetPosts();
+            var posts = postService.GetPosts(author, fromDate, toDate, sort, sortDir, isTagged, page, size);
             return Ok(posts);
         }
 

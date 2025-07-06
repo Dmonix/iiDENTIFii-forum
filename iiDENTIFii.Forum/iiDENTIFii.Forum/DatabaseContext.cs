@@ -17,6 +17,9 @@ namespace iiDENTIFii.Forum
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
+            builder.Entity<Post>()
+                .Property(p => p.CreatedDate)
+                .HasDefaultValueSql("getdate()");
             base.OnModelCreating(builder);
         }
     }

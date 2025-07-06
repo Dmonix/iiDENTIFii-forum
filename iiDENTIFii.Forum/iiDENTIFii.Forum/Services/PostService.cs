@@ -12,9 +12,40 @@ namespace iiDENTIFii.Forum.Services
             this.db = databaseContext;
         }
 
-        public List<Post> GetPosts()
+        public List<Post> GetPosts(string author = "", DateTime? fromDate = null, DateTime? toDate = null, string sort = "", string sortDir = "", bool isTagged = false, int page = 1, int size = 10)
         {
-            var posts = db.Posts.ToList();
+            var postQuery = db.Posts;
+            if (!string.IsNullOrEmpty(author))
+            {
+                postQuery.Where(p => p.Author.Email == author);
+            }
+
+            if (fromDate != null)
+            {
+                postQuery.Where(p => p.CreatedDate >= fromDate);
+            }
+
+            if (toDate != null)
+            {
+                postQuery.Where(p => p.CreatedDate <= toDate);
+            }
+
+            if (!string.IsNullOrEmpty(sort) && !string.IsNullOrEmpty(sortDir))
+            {
+                if (sortDir.Equals("asc", StringComparison.InvariantCultureIgnoreCase))
+                {
+                    postQuery.OrderBy(p => p.GetType().GetProperty(sort).GetValue(p, null));
+                }
+                else
+                {
+                    postQuery.OrderByDescending(p => p.GetType().GetProperty(sort).GetValue(p, null));
+                }
+            }
+
+            postQuery.Where(p => p.IsTagged == isTagged);
+            postQuery.Skip((page - 1) * page).Take(size);
+
+            var posts = postQuery.ToList();
             return posts;
         }
 

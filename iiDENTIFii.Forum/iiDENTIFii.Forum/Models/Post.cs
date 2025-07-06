@@ -13,5 +13,6 @@
         public int LikeCount => Likes.Count;
         public bool IsTagged { get; set; } = false;
         public string TagDescription => IsTagged ? MisleadingDescription : String.Empty;
+        public DateTime CreatedDate { get; set; } = DateTime.UtcNow;
     }
 }
