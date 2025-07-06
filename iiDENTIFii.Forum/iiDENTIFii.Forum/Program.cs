@@ -22,8 +22,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 // Replace In memory DB with SQLite DB
-builder.Services.AddDbContext<DatabaseContext>(options => options.UseInMemoryDatabase("ForumDb"));
-//builder.Services.AddSqlite<DatabaseContext>(connectionString);
+builder.Services.AddSqlite<DatabaseContext>(connectionString);
 
 builder.Services.AddIdentityCore<User>()
     .AddEntityFrameworkStores<DatabaseContext>()
