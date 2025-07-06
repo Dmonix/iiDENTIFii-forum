@@ -1,6 +1,8 @@
 ﻿using iiDENTIFii.Forum.Interfaces;
 using iiDENTIFii.Forum.Models;
+using iiDENTIFii.Forum.Seeding;
 using iiDENTIFii.Forum.Services;
+using Microsoft.EntityFrameworkCore;
 using Moq;
 
 namespace iiDENTIFii.Forum.Tests.Services
@@ -40,8 +42,24 @@ namespace iiDENTIFii.Forum.Tests.Services
                 IsModerator = true
             };
 
-            databaseContext = new Mock<DatabaseContext>().Object;
+            var options = new DbContextOptionsBuilder<DatabaseContext>()
+                .UseInMemoryDatabase("TestDb")
+                .Options;
+
+            databaseContext = new DatabaseContext(options);
+            databaseContext.Users.Add(authorUser);
+            databaseContext.Users.Add(likingUser);
+            databaseContext.Users.Add(modUser);
+
             postService = new PostService(databaseContext);
+
+            var posts = GenerateLists.GetPosts(postService, authorUser);
+        }
+
+        [TearDown]
+        public void TearDown()
+        {
+            databaseContext.Dispose();
         }
 
         [Test]
