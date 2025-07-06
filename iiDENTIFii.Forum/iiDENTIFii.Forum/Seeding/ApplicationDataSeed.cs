@@ -15,44 +15,17 @@ namespace iiDENTIFii.Forum.Seeding
             this.postService = postService;
         }
 
-        public async Task SeedData(UserManager<User> userManager) 
+        public async Task SeedData(UserManager<User> userManager)
         {
-            var donaldUser = new User()
-            {
-                DisplayName = "Donald",
-                UserName = "donald@gmail.com",
-                Email = "donald@gmail.com",
-                IsModerator = true,
-            };
+            var users = GenerateLists.GetUsers();
 
-            var authorUser = new User()
+            foreach (var user in users)
             {
-                Email = "arthur@gmail.com",
-                UserName = "arthur@gmail.com",
-                DisplayName = "Arthur",
-                IsModerator = false
-            };
-
-            var likingUser = new User()
-            {
-                Email = "luke@gmail.com",
-                UserName = "luke@gmail.com",
-                DisplayName = "Luke",
-                IsModerator = false
-            };
-
-            var modUser = new User()
-            {
-                Email = "martin@gmail.com",
-                UserName = "martin@gmail.com",
-                DisplayName = "Martin",
-                IsModerator = true
-            };
-
-            await userManager.CreateAsync(donaldUser, "no_3ntrY");
-            await userManager.CreateAsync(authorUser, "no_3ntrY");
-            await userManager.CreateAsync(likingUser, "no_3ntrY");
-            await userManager.CreateAsync(modUser, "no_3ntrY");
+                await userManager.CreateAsync(user, "no_3ntrY");
+                await userManager.CreateAsync(user, "no_3ntrY");
+                await userManager.CreateAsync(user, "no_3ntrY");
+                await userManager.CreateAsync(user, "no_3ntrY");
+            }
 
             var checkPosts = postService.GetPosts();
             if (checkPosts != null && checkPosts.Count > 0)
@@ -61,10 +34,10 @@ namespace iiDENTIFii.Forum.Seeding
             }
 
             var firstPost = new Post()
-            { 
+            {
                 Title = "SOLID Part 1: Single-responsibility Principle",
                 Content = "A class should have one and only one reason to change, meaning that a class should only have one job",
-                Author = authorUser,
+                Author = users[1],
                 CreatedDate = DateTime.Parse("2024 - 07 - 06T20: 59:37.6237278Z"),
             };
 
@@ -72,35 +45,35 @@ namespace iiDENTIFii.Forum.Seeding
             {
                 Title = "SOLID Part 2: Open-Closed Principle",
                 Content = "Objects or entities should be open for extension but closed for modification",
-                Author = authorUser,
+                Author = users[1],
             };
 
             var thirdPost = new Post()
             {
                 Title = "SOLID Part 3: Liskov Substitution Principle",
                 Content = "Let q(x) be a property provable about objects of x of type T. Then q(y) should be provable for objects of y of type S where S is a subtype of T",
-                Author = authorUser,
+                Author = users[1],
             };
 
             var fourthPost = new Post()
             {
                 Title = "SOLID Part 4: Interface Segregation Principle",
                 Content = "A client should never be forced to implement an interface that it doesn’t use, or clients shouldn’t be forced to depend on methods they do not use.",
-                Author = authorUser,
+                Author = users[1],
             };
 
             var fifthPost = new Post()
             {
                 Title = "SOLID Part 5: Dependency Inversion Principle",
                 Content = "Entities must depend on abstractions, not on concretions. It states that the high-level module must not depend on the low-level module, but they should depend on abstractions",
-                Author = authorUser,
+                Author = users[1],
             };
 
             var sixthPost = new Post()
             {
                 Title = "SOLID Additional",
                 Content = "SOLID is only for OOP systems",
-                Author = authorUser
+                Author = users[1]
             };
 
             firstPost = postService.AddPost(firstPost);
@@ -110,8 +83,8 @@ namespace iiDENTIFii.Forum.Seeding
             fifthPost = postService.AddPost(fifthPost);
             sixthPost = postService.AddPost(sixthPost);
 
-            postService.LikePost(secondPost.Id, likingUser);
-            postService.LikePost(thirdPost.Id, likingUser);
+            postService.LikePost(secondPost.Id, users[2]);
+            postService.LikePost(thirdPost.Id, users[2]);
 
             var comment = new PostComment()
             {
@@ -120,7 +93,52 @@ namespace iiDENTIFii.Forum.Seeding
 
             postService.AddComment(firstPost.Id, comment);
 
-            postService.TagPost(sixthPost.Id, modUser);
+            postService.TagPost(sixthPost.Id, users[3]);
+        }
+    }
+
+    public static class GenerateLists
+    {
+        public static List<User> GetUsers()
+        {
+            var users = new List<User>();
+            users.Add(
+                new User()
+                {
+                    DisplayName = "Donald",
+                    UserName = "donald@gmail.com",
+                    Email = "donald@gmail.com",
+                    IsModerator = true,
+                });
+
+            users.Add(
+                new User()
+                {
+                    Email = "arthur@gmail.com",
+                    UserName = "arthur@gmail.com",
+                    DisplayName = "Arthur",
+                    IsModerator = false
+                });
+
+            users.Add(
+                new User()
+                {
+                    Email = "luke@gmail.com",
+                    UserName = "luke@gmail.com",
+                    DisplayName = "Luke",
+                    IsModerator = false
+                });
+
+            users.Add(
+                new User()
+                {
+                    Email = "martin@gmail.com",
+                    UserName = "martin@gmail.com",
+                    DisplayName = "Martin",
+                    IsModerator = true
+                });
+
+            return users;
         }
     }
 }
