@@ -47,9 +47,9 @@ In Visual Studio, build the project and then you will be able to run it either t
 1. **Tagging Posts**: Moderators can tag posts as "misleading or false information". ✅
 
 ### Post Retrieval
-1. **Pagination**: Retrieve posts with pagination.
-2. **Filters**: Filter posts by date range, author, tags.
-3. **Sorting**: Sort posts by date or like count.
+1. **Pagination**: Retrieve posts with pagination. ✅
+2. **Filters**: Filter posts by date range, author, tags. ✅
+3. **Sorting**: Sort posts by date or like count. ✅
 
 ## Backend Specifications
 1. Built using **C#** and **ASP.NET**. ✅
